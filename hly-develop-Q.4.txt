@@ -1,0 +1,3 @@
+﻿第4题
+Error与Exception有什么区别?
+  ----》Error是错误，Exception是异常
