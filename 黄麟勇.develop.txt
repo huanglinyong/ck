@@ -1,0 +1,195 @@
+书面题（每题2分，总共42分）
+第1题
+float型float f=3.4是否正确?    
+  ----》不正确,会损失精度，要加强制类型转换符。
+
+第2题
+当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递?   
+  ----》（值传递）
+
+第3题
+在Java中一个类被声明为final类型，表示了什么意思?
+  ----》（顶级类，不能被继承）
+
+第4题
+Error与Exception有什么区别?
+  ----》Error是错误，Exception是异常
+
+第5题
+谈谈final, finally的区别。
+   ----》一个类被final修饰，意味着它不能再派生出新的子类，不能作为父类被继承
+   ----》在异常处理时提供finally块来执行任何清除操作
+
+第6题
+String s = new String(“xyz“);创建了几个String Object?
+   ----》2个对象
+
+第7题
+short s1 = 1; s1 = s1 + 1;有什么错? short s1 = 1; s1 += 1;有什么错?
+   ----》第一个错，需要int类型强制转换，第2个没问题
+
+第8题
+数组有没有length()这个方法? String有没有length()这个方法?
+  -----》都没有
+
+
+第9题
+Overload和Override的区别
+  -----》一个是重载一个是重写
+
+
+第10题
+abstract class和interface有什么区别?
+  ----》abstract class是一个类
+
+第11题
+构造器Constructor是否可被override?
+  -----》构造器Constructor不能被继承,因此不能重写Override
+
+第12题
+是否可以继承String类?
+  ----》不可以,因为String类有final修饰符
+
+第13题
+题目如下：
+父类：
+子类：
+请问输出结果？
+  ----》错误: 找不到或无法加载主类 main.ChidClass
+
+第14题
+多线程有几种实现方法,都是什么?同步有几种实现方法,都是什么?
+
+  ----》多线程有两种实现方法，分别是继承Thread类与实现Runnable接口
+
+        同步的实现方面有两种，分别是synchronized,wait与notify
+
+
+第15题
+请说出你所知道的线程同步的方法
+
+  ----》synchronized,wait与notify
+
+
+第16题
+当一个线程进入一个对象的一个synchronized方法后，其它线程是否可进入此对象的其它方法?
+ -----》不能
+
+
+第17题
+从下列选项中选择两个正确的答案放在 line 3 中
+
+------》b，c
+
+第18题
+STRING与STRINGBUFFER的区别
+第19题
+Java类实现序例化的方法是?
+
+------》实现序列化的类都在java.io包中
+
+第20题
+Collection框架中实现比较要实现什么接口?
+第21题
+介绍Java中的Collection 框架结构
+上机题（总共58分）
+第22题（10分）
+写一个满足Singleton模式的类出来。
+
+public class Singleton {
+ 
+
+
+     private Singleton(){}
+ 
+
+
+     private static Singleton instance = new Singleton();
+
+     public static Singleton getInstance() {
+
+           return instance; 
+
+     }
+
+   }
+第23题（15分）
+遍历某文件夹下的所有文件目录及文件 (文件夹从命令行输入)
+
+import java.io.File;
+ 
+public class ListFile {
+ 
+    public static void main(String[] args){
+ 
+        File file = new File("D:\\file");
+        ListFile.listFile(file);
+    }
+ 
+    public static void listFile(File f){
+        if(f.isDirectory()){
+            System.out.println("directory:"+f.getPath()+"--parent:"+f.getParent());
+            File[] t = f.listFiles();
+            for(int i=0;i<t.length;i++){
+                listFile(t[i]);
+            }
+        }else {
+            System.out.println("fileName:"+f.getAbsolutePath()+"--parent:"+f.getParent());
+        }
+    }
+}
+
+
+
+第24题（15分）
+编写一个截取字符串的函数，输入为一个字符串和字节数，输出为按字节截取的字符串。 但是要保证汉字不被截半个，如“我ABC”4，应该截为“我AB”，输入“我ABC汉DEF”，6，应该输出为“我ABC”而不是“我ABC+汉的半个”
+
+public class Test {
+
+    public static void main(String[] args) {
+        String srcStr1 = "我ABC";
+        String srcStr2 = "我ABC汉DEF";
+
+        splitString(srcStr1, 4);
+        splitString(srcStr2, 6);
+    }
+
+    public static void splitString(String src, int len) {
+        int byteNum = 0;
+
+        if (null == src) {
+            System.out.println("The source String is null!");
+            return;
+        }
+
+        byteNum = src.length();
+        byte bt[] = src.getBytes();
+        if (len > byteNum) {
+            len = byteNum;
+        }
+
+        if (bt[len] < 0) {
+            String subStrx = new String(bt, 0, --len);
+            System.out.println("subStrx==" + subStrx);
+        } else {
+            String subStrx = new String(bt, 0, len);
+            System.out.println("subStrx==" + subStrx);
+        }
+    }
+
+}
+
+第25题（18分）
+用Java SOCKET编程，实现简单的Echo功能
+如：客户端从键盘输入 hi (当用户输出exit 退出程序)，服务端响应为 hi(服务器要求为多线程)
+Git的使用
+练习仓库
+自己的仓库
+操作要求
+克隆本仓库到本地
+开发上机题
+新建分支 xxx-develop-Q.yy
+xxx为名字拼音首字母缩写
+yy为第几道题
+推送分支到仓库
+书面题答案写在txt中，推送到仓库
